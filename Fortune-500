@@ -1,0 +1,9 @@
+-- Categorize (case) the companies by size on large, medium, small
+
+SELECT company_name, employees,
+CASE WHEN employees <=2000 THEN "Small"
+WHEN employees <=10000 THEN "Medium"
+WHEN employees >10000 THEN "Large"
+END AS "Company Size"
+FROM fortune_companies
+ORDER BY employees asc;
