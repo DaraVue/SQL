@@ -57,7 +57,7 @@ VALUES
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
 
--- Categorize (case) the companies by size on large, medium, small
+#1-- Categorize (case) the companies by size on large, medium, small
 
 SELECT company_name, employees,
 CASE WHEN employees <=2000 THEN "Small"
@@ -68,7 +68,7 @@ FROM fortune_companies
 ORDER BY employees asc;
 
 
--- Categorize company by who has the greatest revenue by industry using Having
+#2-- Categorize company by who has the greatest revenue by industry using Having
 
 SELECT industry, SUM(revenue) AS total_rev
 FROM fortune_companies
@@ -77,7 +77,7 @@ HAVING total_rev >1000
 ORDER BY total_rev asc;
 
 
---Categorize by company having > 20 Maternity days and Healthcare benefits using AND
+#3--Categorize by company having > 20 Maternity days and Healthcare benefits using AND
 
 SELECT *
 FROM fortune_companies
