@@ -68,7 +68,7 @@ FROM fortune_companies
 ORDER BY employees asc;
 
 
--- Categorize company by who has the revenue by industry using Having
+-- Categorize company by who has the greatest revenue by industry using Having
 
 SELECT industry, SUM(revenue) AS total_rev
 FROM fortune_companies
