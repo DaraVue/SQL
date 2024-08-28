@@ -57,32 +57,62 @@ VALUES
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
 
-#1-- Categorize (case) the companies by size on large, medium, small
+#1-- Categorize (CASE) the companies by size on large, medium, small
 
 SELECT company_name, employees,
 CASE WHEN employees <=2000 THEN "Small"
 WHEN employees <=10000 THEN "Medium"
 WHEN employees >10000 THEN "Large"
-END AS "Company Size"
+else 'null'
+END AS company_size
 FROM fortune_companies
-ORDER BY employees asc;
+ORDER BY company_size;
+
+#2 -- Count How many companies fit into each category
+
+SELECT
+CASE
+WHEN employees <= 2000 THEN 'Small'
+WHEN employees <= 10000 THEN 'Medium'
+WHEN employees > 10000 THEN 'Large'
+ELSE 'Unknown'
+END AS company_size,
+COUNT(*) AS company_count
+FROM
+fortune_companies
+GROUP BY
+company_size;
 
 
-#2-- Categorize company by who has the greatest revenue by industry using Having
+#3-- Categorize TOP 5 Industry's by who has the greatest revenue using HAVING
 
 SELECT industry, SUM(revenue) AS total_rev
 FROM fortune_companies
 GROUP BY industry
 HAVING total_rev >1000
-ORDER BY total_rev asc;
+ORDER BY total_rev DESC
+LIMIT 5;
 
+#4--Categorize company's by maternity and health benefits
 
-#3--Categorize by company having > 20 Maternity days and Healthcare benefits using AND
+SELECT company_name, industry,
+maternity_leave_weeks as maternity
+,healthcare_benefits as healthcare
+from fortune_companies
+where maternity >10
+and healthcare = 1
+order by maternity desc;
 
-SELECT *
-FROM fortune_companies
-WHERE maternity_leave_weeks >= 12
-AND healthcare_benefits = 1
-ORDER BY maternity_leave_weeks asc
-;
+#5-- Find the AVG maternity leave and PTO per industry and count how many company's are within those industires
 
+SELECT
+industry,
+AVG(maternity_leave_weeks) AS avg_maternity,
+COUNT(*) AS company_count,
+AVG(paid_time_off_days) AS avg_pto
+FROM
+fortune_companies
+GROUP BY
+industry
+ORDER BY
+industry;
