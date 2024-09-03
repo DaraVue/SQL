@@ -1,3 +1,6 @@
+--In this SQL, I''m querying a database with multiple databases to gain insight on the statistics of the customers and orders
+
+
 --How many orders in Jan?
 SELECT COUNT(OrderID)
 From BIT_DB.JanSales
@@ -13,8 +16,6 @@ AND length(orderid) = 6
 AND orderid <> 'Order ID';
 
 --Select the customer account numbers for all the orders that were placed in February.
-SELECT *
-FROM BIT_DB.FebSales; -- OrderID, Product, Quantity, price, orderdate, location
 
 SELECT *
 FROM BIT_DB.Customers; -- order_ID, acctnum
@@ -29,8 +30,6 @@ order by orderdate asc;
 
 
 --Which product was the cheapest one sold in January, and what was the price?
-SELECT *
-FROM BIT_DB.JanSales; --orderID, Prooduct, Quantity, price, orderdate, location
 
 SELECT DISTINCT product, price
 FROM BIT_DB.JanSales
@@ -56,6 +55,7 @@ group by product;
 
 
 --How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+
 SELECT count(distinct cust.acctnum) as total_Customers
 ,avg(quantity*price) as AVG_Amount
 FROM BIT_DB.FebSales Feb-- OrderID, Product, Quantity, price, orderdate, location
