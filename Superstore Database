@@ -22,10 +22,23 @@ VALUES
     (9, 'Air Purifier', 'Appliances', 129.50, 35, 4.6),
     (10, 'Premium Coffee Maker', 'Kitchen Supplies', 79.99, 50, 4.9),
 
-#query superstore date to get information on duplicate values in category
+#1--Query how many items are in each category using COUNTING
 
 SELECT category, count(category)
 FROM superstore
 group by category
 having count(category)
 ;
+
+#2 --Order items by price
+
+SELECT price, item_name
+from superstore
+order by price asc;
+
+#3-- Finding the average rating per Category using IN
+SELECT avg(average_rating), category
+from superstore
+where category  in ('Kitchen Supplies', 'Furnishings', 'Appliances','Electronics')
+group by category;
+
