@@ -2,6 +2,7 @@
 
 
 --How many orders in Jan?
+
 SELECT COUNT(OrderID)
 From BIT_DB.JanSales
 WHERE length(orderid) = 6
@@ -39,7 +40,7 @@ order by price asc
 LIMIT 1;
 
 --What is the total revenue for each product sold in January?
---(Revenue can be calculated using the number of products sold and the price of the products).
+   (Revenue can be calculated using the number of products sold and the price of the products).
 
 SELECT sum(quantity)*price as revenue,
 product
