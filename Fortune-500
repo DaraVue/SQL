@@ -68,7 +68,7 @@ END AS company_size
 FROM fortune_companies
 ORDER BY company_size;
 
-#2 -- Count How many companies fit into each category
+#2 -- Count How many companies fit into each category using CASE
 
 SELECT
 CASE
@@ -103,7 +103,7 @@ where maternity >10
 and healthcare = 1
 order by maternity desc;
 
-#5-- Find the AVG maternity leave and PTO per industry and count how many company's are within those industires
+#5-- Find the AVG maternity leave and PTO per industry and count how many company's are within those industries
 
 SELECT
 industry,
