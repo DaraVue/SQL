@@ -1,0 +1,11 @@
+SELECT *
+FROM BIT_DB.Spotifydata;
+
+--Determine the avg popularity, danceability, energy
+
+SELECT avg(danceability),
+avg(popularity),
+avg(energy),
+artist_name, track_name
+From BIT_DB.Spotifydata
+group by artist_name;
