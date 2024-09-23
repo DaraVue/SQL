@@ -1,4 +1,4 @@
---In this SQL, I''m querying a database with multiple databases to gain insight on the statistics of the customers and orders
+--In this SQL, I'm querying a database with multiple databases to gain insight on the statistics of the customers and orders
 
 
 --How many orders in Jan?
